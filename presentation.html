@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AXIOM — Interactive Slide Deck & Keynote</title>
+  <title>AXIOM — Official Keynote Presentation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -13,28 +13,29 @@
       padding: 0;
     }
     body {
-      background-color: #06090e;
-      color: #f1f5f9;
+      background-color: #f1f5f9;
+      color: #0f172a;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       min-height: 100vh;
     }
 
-    /* Top control bar for interactive presenting */
+    /* Top navigation control bar */
     .nav-bar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 54px;
-      background: rgba(11, 15, 23, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      height: 56px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid #e2e8f0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
+      padding: 0 30px;
       z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     }
     .progress-bar-container {
       position: absolute;
@@ -42,18 +43,18 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: rgba(255, 255, 255, 0.05);
+      background: #e2e8f0;
     }
     .progress-bar {
       height: 100%;
-      background: linear-gradient(90deg, #0f62fe, #10b981);
+      background: linear-gradient(90deg, #0f62fe, #059669);
       width: 20%;
       transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* Deck wrapper */
     .deck-container {
-      margin-top: 54px;
+      margin-top: 56px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -61,155 +62,157 @@
       padding: 40px 20px 80px 20px;
     }
 
+    /* 16:9 Widescreen Presentation Slide */
     .slide {
       width: 1200px;
       height: 675px;
-      background: radial-gradient(circle at 80% 20%, rgba(15, 98, 254, 0.14) 0%, rgba(11, 15, 23, 0.98) 70%);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 24px;
       position: relative;
       overflow: hidden;
-      padding: 48px 65px;
+      padding: 50px 65px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 50px rgba(15, 98, 254, 0.06);
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.08), 0 0 1px rgba(15, 23, 42, 0.1);
       page-break-after: always;
       page-break-inside: avoid;
-      animation: slideFadeIn 0.5s ease-out;
     }
 
-    @keyframes slideFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Vibrant atmospheric gradients */
+    .ambient-blue {
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(15, 98, 254, 0.12) 0%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .ambient-green {
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .ambient-purple {
+      position: absolute;
+      top: 50%;
+      right: 15%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(147, 51, 234, 0.08) 0%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
     }
 
-    /* Subtle grid background */
+    /* Subtle geometric grid background */
     .slide::before {
       content: "";
       position: absolute;
       inset: 0;
       background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(rgba(15, 23, 42, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.025) 1px, transparent 1px);
       background-size: 40px 40px;
       pointer-events: none;
     }
 
-    /* Glow blobs */
-    .glow-cyan {
-      position: absolute;
-      top: -120px;
-      right: -120px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, transparent 70%);
-      filter: blur(80px);
-      pointer-events: none;
-    }
-    .glow-purple {
-      position: absolute;
-      bottom: -120px;
-      left: -120px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, transparent 70%);
-      filter: blur(80px);
-      pointer-events: none;
-    }
-
-    /* Badges */
+    /* Vibrant Badges */
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       padding: 6px 14px;
       border-radius: 9999px;
       font-size: 11px;
       font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      letter-spacing: 0.05em;
+      font-weight: 800;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
     .badge-blue {
-      background: rgba(15, 98, 254, 0.18);
-      border: 1px solid rgba(15, 98, 254, 0.5);
-      color: #60a5fa;
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      color: #1d4ed8;
     }
     .badge-green {
-      background: rgba(16, 185, 129, 0.18);
-      border: 1px solid rgba(16, 185, 129, 0.5);
-      color: #34d399;
+      background: #ecfdf5;
+      border: 1.5px solid #a7f3d0;
+      color: #047857;
     }
     .badge-red {
-      background: rgba(244, 63, 94, 0.18);
-      border: 1px solid rgba(244, 63, 94, 0.5);
-      color: #fb7185;
+      background: #fff1f2;
+      border: 1.5px solid #fecdd3;
+      color: #be123c;
     }
     .badge-purple {
-      background: rgba(168, 85, 247, 0.18);
-      border: 1px solid rgba(168, 85, 247, 0.5);
-      color: #c084fc;
+      background: #faf5ff;
+      border: 1.5px solid #e9d5ff;
+      color: #7e22ce;
     }
 
     /* Typography */
     h1 {
-      font-size: 52px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: #0f172a;
     }
     h2 {
       font-size: 32px;
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: #ffffff;
+      color: #0f172a;
       line-height: 1.2;
     }
     h3 {
-      font-size: 15px;
-      font-weight: 700;
-      color: #e2e8f0;
+      font-size: 16px;
+      font-weight: 800;
+      color: #1e293b;
       margin-bottom: 6px;
     }
     p {
-      color: #94a3b8;
-      font-size: 13.5px;
+      color: #475569;
+      font-size: 14px;
       line-height: 1.6;
     }
     .mono {
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Modern Glassmorphic Cards */
+    /* Vibrant Cards */
     .card {
-      background: rgba(15, 23, 42, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
       border-radius: 16px;
       padding: 22px;
-      backdrop-filter: blur(12px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+      transition: all 0.25s ease;
       position: relative;
     }
     .card:hover {
       transform: translateY(-2px);
-      border-color: rgba(15, 98, 254, 0.4);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 12px 24px -5px rgba(15, 23, 42, 0.08);
     }
     .card-critical {
-      border-color: rgba(244, 63, 94, 0.35);
-      background: linear-gradient(180deg, rgba(244, 63, 94, 0.07) 0%, rgba(15, 23, 42, 0.75) 100%);
+      background: #fff8f8;
+      border-color: #fecdd3;
     }
     .card-success {
-      border-color: rgba(16, 185, 129, 0.35);
-      background: linear-gradient(180deg, rgba(16, 185, 129, 0.07) 0%, rgba(15, 23, 42, 0.75) 100%);
+      background: #f6fdf9;
+      border-color: #a7f3d0;
     }
     .card-accent {
-      border-color: rgba(15, 98, 254, 0.4);
-      background: linear-gradient(180deg, rgba(15, 98, 254, 0.1) 0%, rgba(15, 23, 42, 0.75) 100%);
+      background: #f8faff;
+      border-color: #bfdbfe;
     }
 
     /* Grids */
@@ -231,48 +234,40 @@
       justify-content: space-between;
       align-items: center;
       padding-top: 18px;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      font-size: 11px;
+      border-top: 1.5px solid #f1f5f9;
+      font-size: 11.5px;
       color: #64748b;
       font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
       position: relative;
       z-index: 2;
     }
 
-    /* Pulsing animations */
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.85; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.02); }
-    }
-    .pulse-badge {
-      animation: pulseGlow 2.5s infinite ease-in-out;
-    }
-
-    /* Button styles */
     .btn {
-      background: rgba(15, 98, 254, 0.2);
-      border: 1px solid rgba(15, 98, 254, 0.5);
-      color: #fff;
+      background: #0f62fe;
+      border: none;
+      color: #ffffff;
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      font-weight: 600;
-      padding: 8px 16px;
+      font-weight: 700;
+      padding: 9px 18px;
       border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      box-shadow: 0 4px 12px rgba(15, 98, 254, 0.25);
       transition: all 0.2s;
     }
     .btn:hover {
-      background: #0f62fe;
-      box-shadow: 0 0 15px rgba(15, 98, 254, 0.5);
+      background: #0353e9;
+      box-shadow: 0 6px 16px rgba(15, 98, 254, 0.4);
     }
 
     /* Print styles for pixel-perfect PDF export */
     @media print {
       body {
-        background: #06090e !important;
+        background: #f1f5f9 !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
@@ -297,15 +292,15 @@
 
   <!-- Top Navigation Controls -->
   <div class="nav-bar no-print">
-    <div style="display: flex; align-items: center; gap: 12px;">
-      <span class="mono" style="font-weight: 800; font-size: 14px; color: #fff; letter-spacing: -0.02em;">AXIOM SLIDES</span>
-      <span class="badge badge-blue">IBM Bob 2.0 Hackathon</span>
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <span class="mono" style="font-weight: 900; font-size: 15px; color: #0f62fe; letter-spacing: -0.02em;">AXIOM KEYNOTE</span>
+      <span class="badge badge-blue">IBM Bob 2.0 Hackathon • Lablab.ai</span>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <span class="mono" style="font-size: 11px; color: #94a3b8;">Use Arrow Keys ◀ ▶ to Navigate</span>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span class="mono" style="font-size: 11.5px; color: #64748b;">Use ◀ ▶ Arrow Keys to Present</span>
       <button class="btn" onclick="window.print()">
-        📄 Print to PDF
+        📄 Download PDF
       </button>
     </div>
 
@@ -321,51 +316,53 @@
     <!-- SLIDE 1: Title & Hero -->
     <!-- ========================================== -->
     <div class="slide" id="slide-1">
-      <div class="glow-cyan"></div>
-      <div class="glow-purple"></div>
+      <div class="ambient-blue"></div>
+      <div class="ambient-green"></div>
 
       <div class="slide-header">
-        <span class="badge badge-blue pulse-badge">
-          🛡️ IBM Bob 2.0 Hackathon • Lablab.ai
+        <span class="badge badge-blue">
+          🛡️ IBM Bob 2.0 Hackathon • Official Submission
         </span>
-        <span class="mono" style="font-size: 12px; color: #94a3b8;">
+        <span class="mono" style="font-size: 12px; color: #0f62fe; font-weight: 700;">
           github.com/suwalkaanmol/axiom
         </span>
       </div>
 
-      <div style="margin-top: 5px;">
-        <h1 style="margin-bottom: 8px;">AXIOM</h1>
-        <h2 style="font-size: 24px; color: #60a5fa; font-weight: 600; margin-bottom: 16px;">
+      <div style="margin-top: 6px;">
+        <h1 style="margin-bottom: 8px;">
+          AXIOM<span style="color: #0f62fe;">.</span>
+        </h1>
+        <h2 style="font-size: 25px; color: #0f62fe; font-weight: 700; margin-bottom: 16px;">
           Zero-Trust Invariant & Blast-Radius Firewall for AI Dev Partners
         </h2>
-        <p style="font-size: 15px; color: #94a3b8; max-width: 880px; line-height: 1.6;">
-          Autonomous AI agents generate multi-file code in seconds, but introduce silent, unstated assumptions that bypass human review. Axiom acts as an adversarial auditor that uncovers ghost invariants, breaks them with synthesized stress tests, and maps downstream blast radius before merging to production.
+        <p style="font-size: 15.5px; color: #334155; max-width: 890px; line-height: 1.6; font-weight: 500;">
+          Autonomous AI agents generate multi-file code in seconds, but introduce silent, unstated assumptions that bypass human code review. Axiom acts as an adversarial auditor that uncovers ghost invariants, breaks them with synthesized stress tests, and maps downstream blast radius before merging to production.
         </p>
       </div>
 
-      <div class="grid-3" style="margin-top: 20px;">
+      <div class="grid-3" style="margin-top: 22px;">
         <div class="card card-accent">
           <div class="badge badge-purple" style="margin-bottom: 10px;">The Problem</div>
           <h3>Confirmation Bias & Blindspots</h3>
-          <p style="font-size: 12px;">AI code passes basic happy-path unit tests while hiding critical domain and boundary invariants.</p>
+          <p style="font-size: 12.5px; color: #475569;">AI code passes basic happy-path unit tests while hiding critical domain and boundary invariants.</p>
         </div>
 
         <div class="card card-accent">
           <div class="badge badge-blue" style="margin-bottom: 10px;">The Mechanism</div>
           <h3>Adversarial Counter-Agent</h3>
-          <p style="font-size: 12px;">Synthesizes property-based fuzz tests to actively smash assumptions and auto-guides IBM Bob to self-heal.</p>
+          <p style="font-size: 12.5px; color: #475569;">Synthesizes property-based fuzz tests to actively smash assumptions and auto-guides IBM Bob to self-heal.</p>
         </div>
 
         <div class="card card-accent">
           <div class="badge badge-green" style="margin-bottom: 10px;">Enterprise Value</div>
           <h3>in-toto DSSE Code Passport</h3>
-          <p style="font-size: 12px;">Cryptographically attests code safety and blast radius containment for SOC2 and ISO compliance.</p>
+          <p style="font-size: 12.5px; color: #475569;">Cryptographically attests code safety and blast radius containment for SOC2 and ISO compliance.</p>
         </div>
       </div>
 
       <div class="slide-footer">
-        <span>DEVELOPER: <b>ANMOL SUWALKA</b></span>
-        <span>AXIOM SENTINEL v2.0 • 1/5</span>
+        <span>DEVELOPER: <b style="color: #0f172a;">ANMOL SUWALKA</b></span>
+        <span>AXIOM SENTINEL v2.0 • SLIDE 1/5</span>
       </div>
     </div>
 
@@ -374,52 +371,52 @@
     <!-- SLIDE 2: The Real-World Crisis -->
     <!-- ========================================== -->
     <div class="slide" id="slide-2">
-      <div class="glow-cyan"></div>
+      <div class="ambient-blue"></div>
 
       <div class="slide-header">
         <div>
           <span class="badge badge-red">1. The Crisis</span>
           <h2 style="margin-top: 8px;">The Unwritten Assumption Blindspot</h2>
         </div>
-        <span class="mono" style="font-size: 12px; color: #ef4444;">4 Silent Failure Vectors</span>
+        <span class="mono" style="font-size: 12.5px; color: #be123c; font-weight: 700;">4 Silent Failure Vectors</span>
       </div>
 
-      <div class="grid-4" style="margin: 10px 0;">
+      <div class="grid-4" style="margin: 12px 0;">
         <div class="card card-critical">
           <div class="badge badge-red" style="margin-bottom: 10px;">Boundary Neglect</div>
           <h3>Negative Input Exploit</h3>
-          <p style="font-size: 12px;">AI assumes transfer amount is strictly positive. A negative value causes balance to increment artificially (infinite credit duplication).</p>
+          <p style="font-size: 12px; color: #475569;">AI assumes transfer amount is strictly positive. A negative value causes balance to increment artificially (infinite credit duplication).</p>
         </div>
 
         <div class="card card-critical">
           <div class="badge badge-red" style="margin-bottom: 10px;">Tenant Isolation</div>
           <h3>Cross-Tenant Leakage</h3>
-          <p style="font-size: 12px;">AI omits organization workspace boundaries. Rogue accounts can manipulate wallets and data across unrelated corporate tenants.</p>
+          <p style="font-size: 12px; color: #475569;">AI omits organization workspace boundaries. Rogue accounts can manipulate wallets and data across unrelated corporate tenants.</p>
         </div>
 
         <div class="card card-critical">
           <div class="badge badge-red" style="margin-bottom: 10px;">Concurrency Races</div>
           <h3>Non-Atomic Mutations</h3>
-          <p style="font-size: 12px;">Read-modify-write patterns without serialized locks collapse under concurrent traffic, enabling double-spend vulnerabilities.</p>
+          <p style="font-size: 12px; color: #475569;">Read-modify-write patterns without serialized locks collapse under concurrent traffic, enabling double-spend vulnerabilities.</p>
         </div>
 
         <div class="card card-critical">
           <div class="badge badge-red" style="margin-bottom: 10px;">Idempotency Gap</div>
           <h3>Duplicate Side-Effects</h3>
-          <p style="font-size: 12px;">Missing replay token filtering causes network retry packets to debit accounts repeatedly for a single real transaction.</p>
+          <p style="font-size: 12px; color: #475569;">Missing replay token filtering causes network retry packets to debit accounts repeatedly for a single real transaction.</p>
         </div>
       </div>
 
-      <div class="card" style="background: rgba(244, 63, 94, 0.08); border-color: rgba(244, 63, 94, 0.3);">
-        <h3 style="color: #fb7185;">The Human Reviewer Paralysis:</h3>
-        <p style="font-size: 13px; color: #cbd5e1;">
+      <div class="card" style="background: #fff5f5; border-color: #fda4af;">
+        <h3 style="color: #9f1239;">The Human Reviewer Paralysis:</h3>
+        <p style="font-size: 13.5px; color: #334155; font-weight: 500;">
           When an AI dev partner generates a 500-line multi-file pull request, human engineers lack the cognitive bandwidth to trace unwritten edge-case assumptions. They rubber-stamp the PR because the code compiles cleanly—allowing catastrophic vulnerabilities into enterprise production.
         </p>
       </div>
 
       <div class="slide-footer">
         <span>PROBLEM STATEMENT & THREAT MODEL</span>
-        <span>AXIOM SENTINEL v2.0 • 2/5</span>
+        <span>AXIOM SENTINEL v2.0 • SLIDE 2/5</span>
       </div>
     </div>
 
@@ -428,77 +425,77 @@
     <!-- SLIDE 3: The Architecture -->
     <!-- ========================================== -->
     <div class="slide" id="slide-3">
-      <div class="glow-purple"></div>
+      <div class="ambient-purple"></div>
 
       <div class="slide-header">
         <div>
           <span class="badge badge-blue">2. Architecture</span>
           <h2 style="margin-top: 8px;">Axiom: Zero-Trust Verification Engine</h2>
         </div>
-        <span class="mono" style="font-size: 12px; color: #60a5fa;">Closed-Loop Autonomous Pipeline</span>
+        <span class="mono" style="font-size: 12.5px; color: #0f62fe; font-weight: 700;">Closed-Loop Autonomous Pipeline</span>
       </div>
 
-      <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 22px; margin: 10px 0;">
+      <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 22px; margin: 10px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
         <div style="display: flex; justify-content: space-between; align-items: center; text-align: center;">
           
           <div style="flex: 1;">
-            <div class="mono" style="font-size: 24px; margin-bottom: 6px;">🤖</div>
-            <div style="font-weight: 700; font-size: 13px; color: #fff;">1. AI Code Ingest</div>
-            <div style="font-size: 11px; color: #94a3b8;">IBM Bob PR / Diff</div>
+            <div class="mono" style="font-size: 26px; margin-bottom: 6px;">🤖</div>
+            <div style="font-weight: 800; font-size: 13.5px; color: #0f172a;">1. AI Code Ingest</div>
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">IBM Bob PR / Diff</div>
           </div>
 
-          <div style="color: #3b82f6; font-size: 18px;">➔</div>
+          <div style="color: #0f62fe; font-size: 20px; font-weight: 800;">➔</div>
 
           <div style="flex: 1;">
-            <div class="mono" style="font-size: 24px; margin-bottom: 6px;">🔍</div>
-            <div style="font-weight: 700; font-size: 13px; color: #60a5fa;">2. Invariant Miner</div>
-            <div style="font-size: 11px; color: #94a3b8;">AST & Semantic Audit</div>
+            <div class="mono" style="font-size: 26px; margin-bottom: 6px;">🔍</div>
+            <div style="font-weight: 800; font-size: 13.5px; color: #1d4ed8;">2. Invariant Miner</div>
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">AST & Semantic Audit</div>
           </div>
 
-          <div style="color: #3b82f6; font-size: 18px;">➔</div>
+          <div style="color: #0f62fe; font-size: 20px; font-weight: 800;">➔</div>
 
           <div style="flex: 1;">
-            <div class="mono" style="font-size: 24px; margin-bottom: 6px;">⚡</div>
-            <div style="font-weight: 700; font-size: 13px; color: #f43f5e;">3. Adversarial Fuzz</div>
-            <div style="font-size: 11px; color: #94a3b8;">Break Assumptions</div>
+            <div class="mono" style="font-size: 26px; margin-bottom: 6px;">⚡</div>
+            <div style="font-weight: 800; font-size: 13.5px; color: #e11d48;">3. Adversarial Fuzz</div>
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">Break Assumptions</div>
           </div>
 
-          <div style="color: #3b82f6; font-size: 18px;">➔</div>
+          <div style="color: #0f62fe; font-size: 20px; font-weight: 800;">➔</div>
 
           <div style="flex: 1;">
-            <div class="mono" style="font-size: 24px; margin-bottom: 6px;">🌐</div>
-            <div style="font-weight: 700; font-size: 13px; color: #eab308;">4. Blast Radius Map</div>
-            <div style="font-size: 11px; color: #94a3b8;">DB & API Impact</div>
+            <div class="mono" style="font-size: 26px; margin-bottom: 6px;">🌐</div>
+            <div style="font-weight: 800; font-size: 13.5px; color: #d97706;">4. Blast Radius Map</div>
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">DB & API Impact</div>
           </div>
 
-          <div style="color: #3b82f6; font-size: 18px;">➔</div>
+          <div style="color: #0f62fe; font-size: 20px; font-weight: 800;">➔</div>
 
           <div style="flex: 1;">
-            <div class="mono" style="font-size: 24px; margin-bottom: 6px;">🛡️</div>
-            <div style="font-weight: 700; font-size: 13px; color: #10b981;">5. DSSE Passport</div>
-            <div style="font-size: 11px; color: #94a3b8;">Bob Self-Healing Patch</div>
+            <div class="mono" style="font-size: 26px; margin-bottom: 6px;">🛡️</div>
+            <div style="font-weight: 800; font-size: 13.5px; color: #059669;">5. DSSE Passport</div>
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">Bob Self-Healing Patch</div>
           </div>
 
         </div>
       </div>
 
       <div class="grid-2" style="margin-top: 15px;">
-        <div class="card">
+        <div class="card card-accent">
           <div class="badge badge-purple" style="margin-bottom: 8px;">Adversarial Synthesis</div>
           <h3>Property-Based Fuzzing Sandbox</h3>
-          <p style="font-size: 12px;">Rather than generating compliant tests, Axiom synthesizes hostile edge-case payloads (negative floats, null bytes, concurrency spikes) targeting the exact extracted invariants.</p>
+          <p style="font-size: 12.5px; color: #475569;">Rather than generating compliant tests, Axiom synthesizes hostile edge-case payloads (negative floats, null bytes, concurrency spikes) targeting the exact extracted invariants.</p>
         </div>
 
-        <div class="card">
+        <div class="card card-success">
           <div class="badge badge-green" style="margin-bottom: 8px;">Automated Remediation</div>
           <h3>Closed-Loop Self-Healing with Bob</h3>
-          <p style="font-size: 12px;">When invariants break, Axiom feeds the failure trace back to IBM Bob to synthesize an atomic zero-trust patch, re-verifies all tests, and cryptographically signs the PR.</p>
+          <p style="font-size: 12.5px; color: #475569;">When invariants break, Axiom feeds the failure trace back to IBM Bob to synthesize an atomic zero-trust patch, re-verifies all tests, and cryptographically signs the PR.</p>
         </div>
       </div>
 
       <div class="slide-footer">
         <span>SYSTEM ARCHITECTURE & EXECUTION FLOW</span>
-        <span>AXIOM SENTINEL v2.0 • 3/5</span>
+        <span>AXIOM SENTINEL v2.0 • SLIDE 3/5</span>
       </div>
     </div>
 
@@ -507,33 +504,33 @@
     <!-- SLIDE 4: Live Demonstration -->
     <!-- ========================================== -->
     <div class="slide" id="slide-4">
-      <div class="glow-cyan"></div>
+      <div class="ambient-green"></div>
 
       <div class="slide-header">
         <div>
           <span class="badge badge-green">3. Live Demonstration</span>
           <h2 style="margin-top: 8px;">FinTech Wallet Transfer Case Study</h2>
         </div>
-        <span class="mono" style="font-size: 12px; color: #34d399;">Before vs. After Verification</span>
+        <span class="mono" style="font-size: 12.5px; color: #059669; font-weight: 700;">Before vs. After Verification</span>
       </div>
 
       <div class="grid-3" style="margin: 15px 0;">
         <div class="card card-critical">
           <div class="badge badge-red" style="margin-bottom: 10px;">Phase 1: Initial AI Code</div>
           <h3>Happy-Path Illusion</h3>
-          <p style="font-size: 12px; margin-bottom: 10px;">IBM Bob writes <code>transfer_funds()</code>. Standard unit tests pass (100% green).</p>
-          <div class="mono" style="font-size: 11px; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 6px; color: #fb7185;">
+          <p style="font-size: 12.5px; color: #475569; margin-bottom: 10px;">IBM Bob writes <code>transfer_funds()</code>. Standard unit tests pass (100% green).</p>
+          <div class="mono" style="font-size: 11.5px; background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #fecdd3; color: #9f1239; font-weight: 600;">
             • 4 Ghost Invariants Live<br/>
             • PostgreSQL Ledger at Risk<br/>
             • Risk Score: 88/100 (Critical)
           </div>
         </div>
 
-        <div class="card" style="border-color: rgba(244, 63, 94, 0.4); background: rgba(0,0,0,0.4);">
+        <div class="card" style="background: #fff8f8; border-color: #fda4af;">
           <div class="badge badge-red" style="margin-bottom: 10px;">Phase 2: Adversarial Attack</div>
           <h3>Vulnerabilities Exposed</h3>
-          <p style="font-size: 12px; margin-bottom: 10px;">Axiom executes synthesized edge tests live in the integrated sandbox.</p>
-          <div class="mono" style="font-size: 11px; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 6px; color: #fca5a5;">
+          <p style="font-size: 12.5px; color: #475569; margin-bottom: 10px;">Axiom executes synthesized edge tests live in the integrated sandbox.</p>
+          <div class="mono" style="font-size: 11.5px; background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #fecdd3; color: #e11d48; font-weight: 600;">
             • Result: 3 FAILED / 0 PASSED<br/>
             • Amount: -500.0 USD Exploit<br/>
             • Balance incremented to 600!
@@ -543,8 +540,8 @@
         <div class="card card-success">
           <div class="badge badge-green" style="margin-bottom: 10px;">Phase 3: Bob Auto-Patch</div>
           <h3>Zero-Trust Verified</h3>
-          <p style="font-size: 12px; margin-bottom: 10px;">Failure stack traces routed to Bob; zero-trust invariant patch applied.</p>
-          <div class="mono" style="font-size: 11px; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 6px; color: #86efac;">
+          <p style="font-size: 12.5px; color: #475569; margin-bottom: 10px;">Failure stack traces routed to Bob; zero-trust invariant patch applied.</p>
+          <div class="mono" style="font-size: 11.5px; background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #a7f3d0; color: #047857; font-weight: 600;">
             • Result: 3 PASSED / 0 FAILED<br/>
             • Topology turns Emerald Green<br/>
             • Risk Score: 12/100 (Secured)
@@ -552,16 +549,16 @@
         </div>
       </div>
 
-      <div class="card" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.3);">
-        <h3 style="color: #34d399;">Enterprise Impact:</h3>
-        <p style="font-size: 13px; color: #e2e8f0;">
+      <div class="card" style="background: #f0fdf4; border-color: #86efac;">
+        <h3 style="color: #166534;">Enterprise Impact:</h3>
+        <p style="font-size: 13.5px; color: #334155; font-weight: 500;">
           Axiom issues an <b>in-toto / DSSE cryptographic Code Resilience Passport</b>. The PR description receives a verifiable markdown audit badge, giving enterprise engineering directors concrete proof of resilience before merging.
         </p>
       </div>
 
       <div class="slide-footer">
         <span>END-TO-END DEMO METRICS</span>
-        <span>AXIOM SENTINEL v2.0 • 4/5</span>
+        <span>AXIOM SENTINEL v2.0 • SLIDE 4/5</span>
       </div>
     </div>
 
@@ -570,21 +567,21 @@
     <!-- SLIDE 5: Tech Stack & Why Axiom Wins -->
     <!-- ========================================== -->
     <div class="slide" id="slide-5">
-      <div class="glow-purple"></div>
+      <div class="ambient-blue"></div>
 
       <div class="slide-header">
         <div>
           <span class="badge badge-purple">4. Competitive Edge</span>
           <h2 style="margin-top: 8px;">Technical Execution & Why We Win</h2>
         </div>
-        <span class="mono" style="font-size: 12px; color: #c084fc;">Enterprise Ready</span>
+        <span class="mono" style="font-size: 12.5px; color: #7e22ce; font-weight: 700;">Enterprise Ready</span>
       </div>
 
       <div class="grid-2" style="margin: 15px 0;">
-        <div class="card">
+        <div class="card card-accent">
           <div class="badge badge-blue" style="margin-bottom: 10px;">Full-Stack Architecture</div>
           <h3>Built for Speed & Reliability</h3>
-          <ul style="font-size: 12px; color: #94a3b8; line-height: 1.8; margin-left: 15px; margin-top: 8px;">
+          <ul style="font-size: 12.5px; color: #334155; line-height: 1.8; margin-left: 18px; margin-top: 8px; font-weight: 500;">
             <li><b>Backend:</b> Python 3.14, FastAPI, AST Analysis, pytest subprocess runner</li>
             <li><b>Frontend:</b> React 18, Vite, Tailwind CSS, animated topology node graphs</li>
             <li><b>AI Partner:</b> IBM Bob 2.0 / watsonx for code synthesis and self-healing</li>
@@ -593,10 +590,10 @@
           </ul>
         </div>
 
-        <div class="card card-accent">
+        <div class="card card-success">
           <div class="badge badge-green" style="margin-bottom: 10px;">Judges Scoring Blueprint</div>
           <h3>Why Axiom Takes the Podium</h3>
-          <ul style="font-size: 12px; color: #94a3b8; line-height: 1.8; margin-left: 15px; margin-top: 8px;">
+          <ul style="font-size: 12.5px; color: #334155; line-height: 1.8; margin-left: 18px; margin-top: 8px; font-weight: 500;">
             <li><b>Uncrowded Space:</b> 90% build chatbots; Axiom solves automated enterprise verification.</li>
             <li><b>High Visual Drama:</b> Red-to-green topology shifts and live pytest execution on camera.</li>
             <li><b>IBM Ecosystem Fit:</b> Directly complements IBM Bob, turning it into a trusted enterprise tool.</li>
@@ -605,10 +602,10 @@
         </div>
       </div>
 
-      <div class="card" style="display: flex; justify-content: space-between; align-items: center; background: rgba(15, 98, 254, 0.1); border-color: rgba(15, 98, 254, 0.35);">
+      <div class="card" style="display: flex; justify-content: space-between; align-items: center; background: #eff6ff; border-color: #bfdbfe;">
         <div>
-          <h3 style="color: #60a5fa; margin-bottom: 2px;">Ready for Production Evaluation</h3>
-          <p style="font-size: 12px; color: #cbd5e1;">Public Repository: <b>https://github.com/suwalkaanmol/axiom</b></p>
+          <h3 style="color: #1e40af; margin-bottom: 2px;">Ready for Production Evaluation</h3>
+          <p style="font-size: 12.5px; color: #1e3a8a; font-weight: 600;">Public Repository: <b>https://github.com/suwalkaanmol/axiom</b></p>
         </div>
         <div class="badge badge-blue" style="font-size: 12px; padding: 10px 18px;">
           Solo Developer: Anmol Suwalka
@@ -617,7 +614,7 @@
 
       <div class="slide-footer">
         <span>IBM BOB 2.0 HACKATHON • LABLAB.AI</span>
-        <span>AXIOM SENTINEL v2.0 • 5/5</span>
+        <span>AXIOM SENTINEL v2.0 • SLIDE 5/5</span>
       </div>
     </div>
 
@@ -632,7 +629,7 @@
       const scrollPos = window.scrollY;
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = totalHeight > 0 ? (scrollPos / totalHeight) * 100 : 0;
-      document.getElementById('progressBar').style.width = Math.min(100, Math.max(10, progress)) + '%';
+      document.getElementById('progressBar').style.width = Math.min(100, Math.max(20, progress)) + '%';
     }
 
     window.addEventListener('scroll', updateProgress);
