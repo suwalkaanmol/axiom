@@ -23,7 +23,7 @@ def run_adversarial_suite(scenario_id: str, code_mode: str = "vulnerable") -> Fu
     terminal_lines = [
         f"======================== test session starts ========================",
         f"platform win32 -- Python {sys.version.split()[0]}, pytest-9.1.1, pluggy-1.6.0",
-        f"rootdir: C:\\Users\\Divyanshi\\.gemini\\antigravity\\scratch\\axiom",
+        f"rootdir: {PARENT_DIR}",
         f"collected 3 adversarial items for target: {scenario_id} [{code_mode.upper()} MODE]",
         ""
     ]

@@ -67,7 +67,7 @@ for Immediate Zero-Trust Patch        PR Attestation Badge
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/axiom.git
+git clone https://github.com/suwalkaanmol/axiom.git
 cd axiom
 ```
 
